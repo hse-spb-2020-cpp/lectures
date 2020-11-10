@@ -8,6 +8,8 @@ void foo(const T &) {
 
 template<>
 void foo(const char &) {  // Not 'char', arguments should be the same.
+                          // Does not participate in overload resolution, only appears
+                          // when the general case is chosen by the overload resolution.
     std::cout << "2\n";
 }
 
@@ -15,7 +17,7 @@ void foo(double) {
     std::cout << "3\n";
 }
 
-// No partial specializations.
+// No partial specializations for functions, unlike classes.
 
 int main() {
     foo(10);

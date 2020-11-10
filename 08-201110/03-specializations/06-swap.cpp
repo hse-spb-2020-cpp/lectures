@@ -17,18 +17,9 @@ template<typename T>
 struct Foo {};
 
 template<typename T>
-struct Foo<T&> {};
-
-template<typename T>
 void swap(Foo<T> &, Foo<T> &) {
     std::cout << "swap(Foo<T>)\n";
 }
-
-template<typename T>
-void swap(Foo<T&> &, Foo<T&> &) {
-    std::cout << "swap(Foo<T&>)\n";
-}
-
 };
 
 int main() {
@@ -39,20 +30,11 @@ int main() {
         using std::swap;
         swap(a, b);  // OK swap
     }
-
     {
         my_secret::Foo<int> a, b;
         std::swap(a, b);  // Wrong swap.
 
-        using std::swap;
-        swap(a, b);  // OK swap
-    }
-
-    {
-        my_secret::Foo<int&> a, b;
-        std::swap(a, b);  // Wrong swap.
-
-        using std::swap;
-        swap(a, b);  // OK swap
+        using std::swap;  // Optional, but is used for general case.
+        swap(a, b);  // OK swap, ADL.
     }
 }

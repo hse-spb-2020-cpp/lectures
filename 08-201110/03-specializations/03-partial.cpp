@@ -1,4 +1,5 @@
 #include <iostream>
+
 template<typename T>
 struct is_reference {
     static inline const bool value = false;

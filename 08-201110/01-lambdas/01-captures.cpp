@@ -10,29 +10,35 @@ struct Foo {
     void method() {
         int local_var = 30;
         static int static_local_var = 40;
+        [[maybe_unused]] long long local_big[100]{};
 
         // 1
-        []() {
+        auto lambda1 = []() {
             // Not captured.
             // [[maybe_unused]] int x = member_var;
             // [[maybe_unused]] int y = local_var;
             // Never captured, always available.
             static_member_var++;
             static_local_var++;
-        }();
+        };
+        lambda1();
+        std::cout << "sizeof(lambda1) == " << sizeof(lambda1) << "\n";
         assert(static_member_var == 21);
         assert(static_local_var == 41);
 
         // 2
         std::cout << "before lambda 2: " << &member_var << " " << &local_var << "\n";
-        [=]() {  // [this, local_var]
+        auto lambda2 = [=]() {  // [this, local_var]
             std::cout << "in lambda 2    : " << &member_var << " " << &local_var << "\n";
             assert(member_var == 10); // this->member_var: reference!
             assert(local_var == 30);
+            // assert(local_big[0] == 0);  // Not captured, as unused.
             // operator() is const by default.
             // member_var++;
             // local_var++;
-        }();
+        };
+        lambda2();
+        std::cout << "sizeof(lambda2) == " << sizeof(lambda2) << "\n";
 
         // 3
         auto lambda3 = [=]() mutable {  // [this, local_var]
