@@ -1,2 +1,11 @@
 *.exe
 a.out
+*.o
+CMakeFiles/
+cmake_install.cmake
+*.sln
+*.vcxproj
+*.vcxproj.filters
+CMakeCache.txt
+Makefile
+.vs/
