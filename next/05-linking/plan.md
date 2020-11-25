@@ -1,3 +1,5 @@
+Не anonymous namespace, а unnamed namespace.
+
 Теория:
 
 * Про глобальные переменные и константы (extern)
