@@ -1,0 +1,42 @@
+In file included from foo.cpp:3:
+main.h:9:30: error: in-class initialization of static data member 'const string Foo::s' of non-literal type
+    9 |     static const std::string s = "hello";  // Так снова нельзя O_O.
+      |                              ^
+main.h:9:34: error: temporary of non-literal type 'const string' {aka 'const std::__cxx11::basic_string<char>'} in a constant expression
+    9 |     static const std::string s = "hello";  // Так снова нельзя O_O.
+      |                                  ^~~~~~~
+In file included from C:/Software/msys64/mingw64/include/c++/10.2.0/string:55,
+                 from foo.cpp:1:
+C:/Software/msys64/mingw64/include/c++/10.2.0/bits/basic_string.h:77:11: note: 'std::__cxx11::basic_string<char>' is not literal because:
+   77 |     class basic_string
+      |           ^~~~~~~~~~~~
+C:/Software/msys64/mingw64/include/c++/10.2.0/bits/basic_string.h:77:11: note:   'std::__cxx11::basic_string<char>' has a non-trivial destructor
+In file included from main.cpp:4:
+main.h:9:30: error: in-class initialization of static data member 'const string Foo::s' of non-literal type
+    9 |     static const std::string s = "hello";  // Так снова нельзя O_O.
+      |                              ^
+main.h:9:34: error: temporary of non-literal type 'const string' {aka 'const std::__cxx11::basic_string<char>'} in a constant expression
+    9 |     static const std::string s = "hello";  // Так снова нельзя O_O.
+      |                                  ^~~~~~~
+In file included from C:/Software/msys64/mingw64/include/c++/10.2.0/string:55,
+                 from main.cpp:1:
+C:/Software/msys64/mingw64/include/c++/10.2.0/bits/basic_string.h:77:11: note: 'std::__cxx11::basic_string<char>' is not literal because:
+   77 |     class basic_string
+      |           ^~~~~~~~~~~~
+C:/Software/msys64/mingw64/include/c++/10.2.0/bits/basic_string.h:77:11: note:   'std::__cxx11::basic_string<char>' has a non-trivial destructor
+main.cpp:6:1: error: 'static' may not be used when defining (as opposed to declaring) a static data member [-fpermissive]
+    6 | static int Foo::N = 100;
+      | ^~~~~~
+In file included from bar.cpp:3:
+main.h:9:30: error: in-class initialization of static data member 'const string Foo::s' of non-literal type
+    9 |     static const std::string s = "hello";  // Так снова нельзя O_O.
+      |                              ^
+main.h:9:34: error: temporary of non-literal type 'const string' {aka 'const std::__cxx11::basic_string<char>'} in a constant expression
+    9 |     static const std::string s = "hello";  // Так снова нельзя O_O.
+      |                                  ^~~~~~~
+In file included from C:/Software/msys64/mingw64/include/c++/10.2.0/string:55,
+                 from bar.cpp:1:
+C:/Software/msys64/mingw64/include/c++/10.2.0/bits/basic_string.h:77:11: note: 'std::__cxx11::basic_string<char>' is not literal because:
+   77 |     class basic_string
+      |           ^~~~~~~~~~~~
+C:/Software/msys64/mingw64/include/c++/10.2.0/bits/basic_string.h:77:11: note:   'std::__cxx11::basic_string<char>' has a non-trivial destructor
