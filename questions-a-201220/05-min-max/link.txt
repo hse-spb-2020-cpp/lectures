@@ -1,0 +1,3 @@
+Arno Schoeld "Rvalue lifetime disaster"
+
+https://www.youtube.com/watch?v=zzkpTbJiFPM
