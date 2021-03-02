@@ -15,4 +15,7 @@ int main() {
     // 10. T1 == char
 
     // Выше нарушаем: T1 == int, T2 == float.
+
+    // Тут тоже нарушение с точки зрения C++: https://en.wikipedia.org/wiki/Fast_inverse_square_root
+    // Но, возможно, не с точки зрения C.
 }
