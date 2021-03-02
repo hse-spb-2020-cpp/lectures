@@ -16,7 +16,9 @@ struct Derived2 : Base {
 };
 
 struct DerivedX : Derived1, Derived2 {
-    // void foo() override {  // WTF: TODO Егору посмотреть.
+    // void foo() override {  // Перезапишет foo() сразу изо всех базовых классов, даже без виртуального наследования.
+                              // Исчезнет неоднозначность.
+                              // См. 19-210302/01-old/02-mi-override.cpp
     // }
 };
 
