@@ -11,8 +11,11 @@ struct Foo {
 private:  // Или protected, неважно
     Foo() {}
 
-    // friend void std::unique_ptr<Foo> std::make_unique<Foo>();  // TODO: как указать namespace?
+    // Техническая возможность есть, но так лучше не делать.
+    friend std::unique_ptr<Foo> std::make_unique<Foo>();
 };
 
 int main() {
+    auto p = std::make_unique<Foo>();
+    // Но всё равно не помогает: std::make_unique() может вызывать не напрямую, а через что-то промежуточное.
 }
