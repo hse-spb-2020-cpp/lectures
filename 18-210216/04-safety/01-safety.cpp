@@ -38,7 +38,7 @@ int main() {
         } catch (...) {
         }
 
-        assert(a.size() == 1'000'000 || a.size() == 1'000'001);  // TODO: может быть неверно!
+        assert(a.size() == 1'000'000 || a.size() == 1'000'001);  // Может быть неверно! WeirdObject нельзя move с гарантией noexcept => не можем дать сильную тут.
         a.clear();  // Но вот так, скорее всего, можем.
 
         std::cout << std::is_nothrow_move_constructible_v<WeirdObject> << "\n";

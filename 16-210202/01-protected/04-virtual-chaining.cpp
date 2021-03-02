@@ -11,7 +11,7 @@ protected:
 };
 
 struct Developer : Employee {
-    std::string language;  // TODO: make enum.
+    std::string language;  // Хорошо бы сделать enum'ом.
 
 protected:
     void print(std::ostream &os) override {

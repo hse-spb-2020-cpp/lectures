@@ -1,4 +1,3 @@
-// TODO: не забыть виртуальный деструктор
 struct Base1 { virtual ~Base1() {} };
 struct Base2 { virtual ~Base2() {} };
 struct Base3 { virtual ~Base3() {} };

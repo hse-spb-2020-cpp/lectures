@@ -3,6 +3,8 @@
 #include <vector>
 #include <boost/core/demangle.hpp>
 
+// Важно, что Base полиморфный (есть хотя бы один виртуальный метод), иначе не включится RTTI.
+// Тогда typeid() будет работать на этапе компиляции.
 struct Base { virtual ~Base() {} };
 
 struct Derived : Base {};
