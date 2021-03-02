@@ -16,5 +16,6 @@ struct MyPod {
 int main() {
     MyPod p;
     std::ofstream f("01.bin", std::ios_base::out | std::ios_base::binary);
+    // Не UB.
     f.write(reinterpret_cast<const char*>(&p), sizeof(p));
 }
