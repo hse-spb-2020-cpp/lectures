@@ -10,13 +10,13 @@
 //
 // Разницы от отключения исключений тоже локально не нашлось.
 
-bool foobar(int a, int b, bool please_throw) /* noexcept */ {
-    if (please_throw) {
+bool foobar(int a, int b, bool please_throw) noexcept {
+/*    if (please_throw) {
         if (a % b) {
             throw 0;
         }
         return true;
-    }
+    }*/
     return a % b == 0;
 }
 
@@ -27,7 +27,7 @@ int main() {
 
     for (int i = 0; i < STEPS; i++) {
 //        try {
-            foobar(10, 3, false);
+          foobar(10, 3, false);
 //        } catch (...) {
 //        }
     }
