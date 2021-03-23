@@ -24,3 +24,4 @@ https://stackoverflow.com/a/573574/767632
 Независимость виртуального наследования, виртуальных функций, RTTI. Но `dynamic_cast`/`typeid` требуют чего-то конкретного из этих трёх.
 https://www.ralfj.de/blog/2020/12/14/provenance.html
 нельзя(?) себя пересоздать (намекнуть про std::launder)
+union{}
