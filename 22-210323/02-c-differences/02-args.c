@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>  // Not <cstdio>!
 
 void foo(int a) {
     printf("%s\n", (char*)a);  // UB, possibly. E.g. on 64-bit machine.

@@ -2,10 +2,12 @@
 #include <stdio.h>
 
 int main(void) {
+    // 1.
     int *a = malloc(5 * sizeof(int));  // new int[5];
-    // int *a = (int*)malloc(5 * sizeof(int)); // very bad style
+//  int *a = (int*)malloc(5 * sizeof(int)); // very bad style
     free(a);  // delete[] a
 
-    // decltype('A') == int in C
+    // 2.
+    // 'A' is int in C, char in C++.
     printf("%d %d\n", (int)sizeof('A'), (int)sizeof(char));
 }
