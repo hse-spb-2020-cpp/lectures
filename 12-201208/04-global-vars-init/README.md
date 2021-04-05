@@ -15,5 +15,3 @@ https://en.cppreference.com/w/cpp/language/initialization#Static_initialization
     Порядок инициализации переменных между разными translation unit не знаем.
     Внутри одного TU: сверху вниз.
     https://isocpp.org/wiki/faq/ctors#static-init-order
-
-    TODO: можно ли "перемешать" инициализацию между разными TU?

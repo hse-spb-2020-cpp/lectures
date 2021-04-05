@@ -1,3 +1,7 @@
+# Старые вопросы
+12-201208/04-global-vars-init/TODO.md
+21-210316/00-questions/01.cpp
+
 # Исключения
 ## exception_ptr, nested exceptions
 Для многопоточности и чего-то такого?
