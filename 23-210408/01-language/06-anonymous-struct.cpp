@@ -1,5 +1,5 @@
-#include <iostream>
 #include <boost/core/demangle.hpp>
+#include <iostream>
 
 // https://stackoverflow.com/questions/14248044/are-anonymous-structs-standard-and-really-what-are-they
 struct Foo {

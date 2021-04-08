@@ -15,13 +15,16 @@ int main() {
                 int wtf0 = 0;
                 std::cout << "  2\n";
             } break;
-            default: {
-                int wtf1 = 0;   // Compilation Error в C++.
-                std::string s;  // Точно Compilation Error: надо как-то запомнить, вызывать ли деструктор, лень.
+            default: /*{*/
+                int wtf1 = 0;  // Compilation Error в C++, в Си можно оставить
+                               // неинициализированной.
+                std::string s;  // Compilation Error ещё хуже: надо как-то
+                                // запомнить, вызывать ли деструктор, лень.
                 std::cout << "  default\n";
-            }   break;
+                /*}*/ break;
             case 3:
-                int wtf2 = 0;  // case ниже нет, поэтому никакого "crosses initialization"
+                int wtf2 = 0;  // case ниже нет, поэтому никакого "crosses
+                               // initialization"
                 std::cout << "  3\n";
                 break;
         }

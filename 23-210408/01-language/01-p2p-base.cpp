@@ -11,11 +11,12 @@ int main() {
         Base *pb = &b;
         Derived *pd = &d;
         pb = pd;
+
         // pd = pb;
         /* Причина:
-        pb = &d2;  // Base* <-- Derived2*
-        pd = pb;
-        pd указывает на Derived2???
+            pb = &d2;  // Base* <-- Derived2*
+            pd = pb;
+            // pd указывает на Derived2, WTF.
         */
     }
     // https://isocpp.org/wiki/faq/proper-inheritance#derivedptrptr-to-baseptrptr
@@ -27,20 +28,20 @@ int main() {
 
         // Simple
         // ppd = ppb;
-        /* Причина
-        pb = &d2;
-        // *ppb == &d2
-        ppd = ppb;
-        // *ppd == &d2
+        /* Причина:
+            pb = &d2;
+            // *ppb == &d2
+            ppd = ppb;
+            // *ppd == &d2, WTF.
         */
 
         // More complicated
-        ppb = ppd;
-        /* Причина
-        ppb = ppd;
-        *ppb = &d2;
-        // *ppb == &d2
-        // *ppd == &d2
+        // ppb = ppd;
+        /* Причина:
+            ppb = ppd;
+            *ppb = &d2;
+            // *ppb == &d2
+            // *ppd == &d2, WTF.
         */
     }
 }

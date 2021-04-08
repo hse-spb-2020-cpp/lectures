@@ -1,6 +1,6 @@
-#include <vector>
 #include <cstdio>
 #include <iostream>
+#include <vector>
 
 extern "C" int foo();  // Disable name mangling, and link like C.
 
@@ -9,8 +9,12 @@ int foo(int x) {  // OK
 }
 
 namespace a {
-// extern "C" int foo(int);  // Warning: same as foo(), but different set of arguments. It's ok in C, though (e.g. printf).
-}
+#if 0
+// Warning: same as foo(), but different set of arguments. It's ok in C, though
+// (e.g. printf).
+extern "C" int foo(int);
+#endif
+}  // namespace a
 
 struct Foo {
     Foo() {

@@ -19,7 +19,8 @@ union AnyEvent {  // 12
 };
 
 // tagged union: std::variant<MouseEvent, KeyboardEvent>
-// Haskell: tagged union тоже есть, называется "тип-сумма", и там синтаксис хороший и безопасный.
+// Haskell: tagged union тоже есть, называется "тип-сумма", и там синтаксис
+// хороший и безопасный.
 struct Event {  // 16
     int type;
     union AnyEvent event;
