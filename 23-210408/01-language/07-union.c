@@ -26,7 +26,7 @@ struct Event {  // 16
     union AnyEvent event;
 };
 
-int main() {
+int main(void) {
     printf("%d\n", sizeof(struct Event));
     struct Event ev;
     ev.type = MOUSE;

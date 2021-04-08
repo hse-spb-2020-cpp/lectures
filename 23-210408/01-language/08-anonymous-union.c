@@ -19,7 +19,7 @@ struct Event {  // 16
     } /* event */;
 };
 
-int main() {
+int main(void) {
     printf("%d\n", sizeof(struct Event));
     struct Event ev;
     ev.type = MOUSE;
