@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // TODO: check printf result. No assert() because it can be removed.
+    // WONTFIX: check printf result. No assert() because it can be removed.
     printf("Result: ");
     for (int i = n - 1; i >= 0; i--) {
         printf("%d", arr[i]);
