@@ -1,6 +1,8 @@
+#include <assert.h>
 #include <stdio.h>
+#include <string.h>
 
-int main() {
+int main(void) {
     // https://en.cppreference.com/w/c/io/fscanf
     char buf1[10], buf2[20];
     int x;

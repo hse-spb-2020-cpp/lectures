@@ -14,7 +14,7 @@ void my_memcpy2(void *restrict dst, const void *restrict src, size_t n) {
     }
 }
 
-int main() {
+int main(void) {
     {
         int arr[] = {1, 2, 3, 4, 5};
         my_memcpy1(arr, arr + 2, sizeof(int) * 3);

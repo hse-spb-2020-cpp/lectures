@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int main() {
+int main(void) {
     int n = 10;
     if (n >= 5)
         goto big_n;
