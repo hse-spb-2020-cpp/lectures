@@ -11,14 +11,8 @@ Self-move на самом деле допускается: оставляет о
 https://habr.com/ru/post/160955/
 
 # Си
-## Трюк с `OpaqueVendorType` для типобезопасности в Си
-после extern "C", mangling и остального
-
-https://stackoverflow.com/a/573574/767632
-
 # Прочее
 Термин RTTI, когда его отключают.
 Независимость виртуального наследования, виртуальных функций, RTTI. Но `dynamic_cast`/`typeid` требуют чего-то конкретного из этих трёх.
 https://www.ralfj.de/blog/2020/12/14/provenance.html
 нельзя(?) себя пересоздать (намекнуть про std::launder)
-union{}
