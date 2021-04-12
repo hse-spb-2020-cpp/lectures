@@ -11,7 +11,7 @@ int main(void) {
             continue;
         }
         int x, read;
-        // May take linear time! Like in GTA.
+        // May take linear time! Like in GTA: https://nee.lv/2021/02/28/How-I-cut-GTA-Online-loading-times-by-70/
         int res = sscanf(buf + pos, "%d%n", &x, &read);
         assert(res == 1);
         printf("pos=%d; read=%d; x=%d\n", pos, read, x);
