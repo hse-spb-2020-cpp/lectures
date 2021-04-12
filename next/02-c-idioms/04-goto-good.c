@@ -12,24 +12,24 @@ int main(int argc, char *argv[]) {
     FILE *f = fopen(argv[1], "r");
     if (!f) {
         printf("Unable to open file\n");
-        goto err_file;
+        goto f_closed;
     }
 
     int n;
     if (fscanf(f, "%d", &n) != 1) {
         printf("Unable to read n\n");
-        goto err_alloc;
+        goto f_opened;
     }
     int *arr = malloc(n * sizeof(int));
     if (!arr) {
         printf("Unable to allocate array for %d ints\n", n);
-        goto err_alloc;
+        goto buf_freed;
     }
 
     for (int i = 0; i < n; i++) {
         if (fscanf(f, "%d", &arr[i]) != 1) {
             printf("Unable to read element %d\n", i + 1);
-            goto err_read;
+            goto err;
         }
     }
 
@@ -43,11 +43,12 @@ int main(int argc, char *argv[]) {
     printf("\n");
     ret = 0;
 
-err_read:
+err:
     free(arr);
-err_alloc:
+buf_freed:
+f_opened:
     fclose(f);
-err_file:;
+f_closed:;
 
     return ret;
 }
