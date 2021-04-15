@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO
-
 void my_memcpy1(void *restrict dst, const void *restrict src, size_t n) {
+    // restrict: dst/src do not intersect and do not point to &n.
     while (n-- > 0)
         *(char *)dst++ = *(const char *)src++;
 }
@@ -29,4 +28,6 @@ int main(void) {
             printf("%d%c", arr[i], "\n "[i + 1 < 5]);
         }
     }
+    // memcpy: no intersections
+    // memmove: allows intersections
 }
