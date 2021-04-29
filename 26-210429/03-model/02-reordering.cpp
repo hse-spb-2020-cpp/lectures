@@ -10,12 +10,14 @@ int main() {
 
     std::thread t([&]() {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        // Order? CPU?
+        // С точки зрения компилятора И процессора следующие две строчки можно свободно менять местами.
+        // Никто же не заметит.
         data = 123;
         finished = true;
     });
 
     while (!finished) {}
+    // Разве что другой поток может заметить :(
     std::cout << data << "\n";
 
     t.join();

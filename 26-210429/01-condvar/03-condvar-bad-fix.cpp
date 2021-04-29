@@ -13,23 +13,18 @@ int main() {
 
     std::thread producer([&]() {
         while (true) {
-            std::string input_buf;
-            std::cin >> input_buf;
-
             std::unique_lock l(m);
-            input = std::move(input_buf);
+            std::cin >> input;  // input меняем только под мьютексом, иначе стреляет редко и метко.
             input_available = true;
             cond.notify_one();
-        }
+        }  // мьютекс разблокирован очень-очень мало времени, не успеваем переключиться на consumer и схватить.
     });
 
     std::thread consumer([&]() {
         while (true) {
             std::unique_lock l(m);
-            while (!input_available) {  // while, не if! Ещё бывает wait_for.
-                cond.wait(l);
-            }
-            std::string input_snapshot = std::move(input);
+            cond.wait(l, [&]() { return input_available; });
+            std::string input_snapshot = input;
             input_available = false;
             l.unlock();
 

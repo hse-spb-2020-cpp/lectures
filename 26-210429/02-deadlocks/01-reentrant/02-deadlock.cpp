@@ -4,22 +4,15 @@
 
 std::mutex m;
 
-void foo_lock_held(int x) {
+void foo(int x) {  // Атомарная операция, atomic.
+    std::unique_lock l(m);
     std::cout << "foo(" << x << ")\n";
 }
 
-void foo(int x) {  // Атомарная операция, atomic.
-    std::unique_lock l(m);
-    foo_lock_held(x);
-//    std::cout << "foo(" << x << ")\n";
-}
-
-void double_foo(int x) {
-    std::unique_lock l(m);
-    foo_lock_held(x);
-//    foo(x);
-    foo_lock_held(x + 1);
-//    foo(x + 1);
+void double_foo(int x) {  // Неатомарная операция :(
+    std::unique_lock l(m);  // Берём мьютекс первый раз.
+    foo(x);  // Берём мьютекс второй раз, deadlock :( Можно было бы взять recursive_mutex, но это обычно плохой стиль.
+    foo(x + 1);
 }
 
 int main() {

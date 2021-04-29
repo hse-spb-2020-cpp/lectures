@@ -16,17 +16,18 @@ int main() {
             std::cin >> input;
             std::unique_lock l(m);
             input_available = true;
-            cond.notify_one();
+            cond.notify_one();  // Разбудит один случайный поток. Важно, чтобы это было ему по делу.
         }
     });
 
     std::thread consumer([&]() {
         while (true) {
             std::unique_lock l(m);
-            while (!input_available) {  // while, не if! Ещё бывает wait_for.
+            while (!input_available) {  // while, не if!
                 cond.wait(l);
             }
-            // cond.wait(l, []() { return input_available; });
+            // Эквивалентная while конструкция, чтобы было сложнее набагать и были понятнее намерения.
+            // cond.wait(l, []() { return input_available; });  // "ждём выполнения предиката".
             std::string input_snapshot = input;
             input_available = false;
             l.unlock();
