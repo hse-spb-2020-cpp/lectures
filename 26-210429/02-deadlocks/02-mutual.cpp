@@ -17,6 +17,7 @@ int main() {
             std::unique_lock b(m1);
         }
     });
+    // TODO: sort (сравнивать адреса нельзя), std::lock (не может sort даже верный, может пробовать)
     t2.join();
     t1.join();
 }
