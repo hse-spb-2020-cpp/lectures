@@ -1,23 +1,26 @@
+#include <cassert>
+#include <cstdlib>
 #include <mutex>
 #include <thread>
 
-const int N = 10'000;
+int main(int argc, char *argv[]) {
+    assert(argc == 2);
+    const int N = std::atoi(argv[1]);
 
-int main() {
     std::mutex m1, m2;
     std::thread t1([&]() {
         for (int i = 0; i < N; i++) {
-            std::unique_lock a(m1);
-            std::unique_lock b(m2);
+            std::scoped_lock a(m1, m2);
         }
     });
     std::thread t2([&]() {
         for (int i = 0; i < N; i++) {
-            std::unique_lock a(m2);
-            std::unique_lock b(m1);
+            std::scoped_lock b(m2, m1);
         }
     });
-    // TODO: sort (сравнивать адреса нельзя), std::lock (не может sort даже верный, может пробовать)
+    // if (&m1 < &m2)  // UB
+    // std::less<std::mutex*>()(&m1, &m2)  // OK
+    // std::lock(....) <--- std::scoped_lock(....)
     t2.join();
     t1.join();
 }

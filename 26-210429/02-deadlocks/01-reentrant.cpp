@@ -4,14 +4,22 @@
 
 std::mutex m;
 
-void foo(int x) {  // Атомарная операция, atomic.
-    std::unique_lock l(m);
+void foo_lock_held(int x) {
     std::cout << "foo(" << x << ")\n";
 }
 
+void foo(int x) {  // Атомарная операция, atomic.
+    std::unique_lock l(m);
+    foo_lock_held(x);
+//    std::cout << "foo(" << x << ")\n";
+}
+
 void double_foo(int x) {
-    foo(x);
-    foo(x + 1);
+    std::unique_lock l(m);
+    foo_lock_held(x);
+//    foo(x);
+    foo_lock_held(x + 1);
+//    foo(x + 1);
 }
 
 int main() {

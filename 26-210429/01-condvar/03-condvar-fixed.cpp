@@ -29,7 +29,7 @@ int main() {
             while (!input_available) {  // while, не if! Ещё бывает wait_for.
                 cond.wait(l);
             }
-            std::string input_snapshot = input;
+            std::string input_snapshot = std::move(input);
             input_available = false;
             l.unlock();
 

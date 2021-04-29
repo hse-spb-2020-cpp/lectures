@@ -14,7 +14,6 @@ int main() {
     std::thread producer([&]() {
         while (true) {
             std::cin >> input;
-
             std::unique_lock l(m);
             input_available = true;
             cond.notify_one();
@@ -27,6 +26,7 @@ int main() {
             while (!input_available) {  // while, не if! Ещё бывает wait_for.
                 cond.wait(l);
             }
+            // cond.wait(l, []() { return input_available; });
             std::string input_snapshot = input;
             input_available = false;
             l.unlock();

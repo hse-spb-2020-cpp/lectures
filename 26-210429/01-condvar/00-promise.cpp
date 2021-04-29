@@ -5,7 +5,6 @@
 #include <thread>
 
 int main() {
-    std::mutex m;
     std::promise<std::string> input_promise;
     std::future<std::string> input_future = input_promise.get_future();
 
@@ -14,6 +13,11 @@ int main() {
         std::cin >> input;
         input_promise.set_value(std::move(input));
     });
+/*    std::future<std::string> input_future = std::async([]() {
+        std::string input;
+        std::cin >> input;
+        return input;
+    });*/
 
     std::thread consumer([&]() {
         std::string input = input_future.get();
