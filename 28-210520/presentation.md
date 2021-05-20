@@ -141,15 +141,16 @@ template<std::size_t I, typename Head, typename ...Tail>
 struct tuple_element<I, tuple<Head, Tail...>> : tuple_element<I - 1, tuple<Tail...>> {
 };
 // ....
-tuple_element<0, tuple<int, string>> = int
-tuple_element<1, tuple<int, string>> = tuple_element<0, tuple<string>> = string
+tuple_element<0, tuple<int, string>>::type = int
+tuple_element<1, tuple<int, string>>::type =
+     tuple_element<0, tuple<string>>::type = string
 ```
 
 `get<>` тоже рекурсивно:
 ```c++
 template<std::size_t I, typename ...Ts>
 auto get(const tuple<Ts...> &tuple) {  // auto& / tuple&
-    // Можно if constexpr, можно специализация для I = 0.
+    // Можно if constexpr, можно специализацию для I = 0.
     if constexpr (I == 0) return tuple.head;
     else                  return get<I - 1>(tuple.tail);
 }
@@ -212,7 +213,7 @@ typename type_list_to_tuple<tail_t<int, string>>::type = tuple<string>
 ```
 
 ---
-## 3.7.2. Общее решение для возвращата
+## 3.7.2. Общее решение для возврата
 Попытка "в лоб": можно передать `tuple` как параметр:
 ```c++
 // Заглушка
