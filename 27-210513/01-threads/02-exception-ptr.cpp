@@ -3,6 +3,8 @@
 #include <thread>
 #include <iostream>
 
+// https://habr.com/ru/post/160955/
+
 struct my_exception {
     int value;
 };
