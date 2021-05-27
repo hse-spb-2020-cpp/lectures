@@ -11,12 +11,6 @@ union { struct{} struct {} }
 anonymous unions: C++ (all); C11
 anonymous structs: C11
 
-# Исключения
-## exception_ptr, nested exceptions
-Для многопоточности и чего-то такого?
-https://habr.com/ru/post/160955/
-
-# Си
 # Прочее
 Термин RTTI, когда его отключают.
 Независимость виртуального наследования, виртуальных функций, RTTI. Но `dynamic_cast`/`typeid` требуют чего-то конкретного из этих трёх.
