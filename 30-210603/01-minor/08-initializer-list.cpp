@@ -1,11 +1,13 @@
 #include <cassert>
+#include <initializer_list>
 #include <iostream>
 #include <memory>
 #include <vector>
 
-struct Foo{
+struct Foo {
     int val;
-    Foo(int x, int y) : val(10 * x + y) {}
+    Foo(int x, int y) : val(10 * x + y) {
+    }
 };
 
 struct Bar {
@@ -24,8 +26,11 @@ struct Baz {
     int val;
     std::vector<Baz> children;
 
-    Baz(int val_) : val(val_) {}
-    Baz(std::initializer_list<Baz> children_) : val(-1), children(children_.begin(), children_.end()) {}
+    Baz(int val_) : val(val_) {
+    }
+    Baz(std::initializer_list<Baz> children_)
+        : val(-1), children(children_.begin(), children_.end()) {
+    }
 
     void print() const {
         if (val >= 0) {
@@ -42,14 +47,15 @@ struct Baz {
 
 int main() {
     Bar{1, 2, 3, 4};
-    Bar{{1, 2}, {3, 4}};
+    Bar{{1, 2}, {3, 4}, {5, 6}};
     Baz{
-        1,
-        2,
-        {3, 4},
-        {{5}},
-        {{6}, 7, {}},
-        8
-    }.print();
+        1,             //
+        2,             //
+        {3, 4},        //
+        {{5}},         //
+        {{6}, 7, {}},  //
+        8              //
+    }
+        .print();
     std::cout << "\n";
 }

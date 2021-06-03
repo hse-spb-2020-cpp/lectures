@@ -240,7 +240,9 @@ int main() {
     bar::impl::Bar b;
     func(f);  // ok
     func(b);  // ok
+    foo::impl::func(f);  // Qualified lookup, no ADL, ok.
     foo::impl::foo(f);  // Qualified lookup, no ADL, ok.
+    foo::func(f);  // Qualified lookup, no ADL, compilation error.
     foo::foo(f);  // Qualified lookup, no ADL, compilation error.
     foo(f);  // compilation error: namespace foo
 }

@@ -5,4 +5,16 @@ anonymous unions: C++ (all); C11
 
 anonymous structs: C11
     Они нужны, чтобы писать вот так:
-    union { struct{} struct {} }
+    union S {
+       struct {
+           int x;
+           int y;
+       };
+       struct {
+           double f;
+       };
+    };
+    S s;
+    s.x
+    s.y
+    s.f

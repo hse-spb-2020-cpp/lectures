@@ -12,6 +12,7 @@ struct S {
 int main() {
     std::cout << sizeof(int) << " " << alignof(int) << "\n";
     std::cout << sizeof(std::uint32_t) << " " << alignof(std::uint32_t) << "\n";
+    std::cout << sizeof(int*) << " " << alignof(int*) << "\n";
 
     // Вопрос: а почему можно вообще читать невыровненно, а ссылки на невыровненную память брать нельзя?
     // Даже в std::swap(). Undefined sanitizer будет ругаться. Или на x86_64 всё хорошо?
